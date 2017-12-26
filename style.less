@@ -1,0 +1,173 @@
+@white: #fff;
+@blue: #337ab7;
+@btn_border: #2e6da4;
+@gray: #a5a3a3;
+@black: #000;
+.opacity(@_fade) {
+  opacity: @_fade;
+}
+
+html, body {
+  height:100%;
+}
+body{
+  padding: 0;
+  margin:0;
+}
+
+.header {
+  text-align: center;
+  font-size: 36px;
+  background: @blue;
+  color: @white;
+}
+
+.reg_form_wr {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  form {
+    width: 100%;
+  }
+}
+
+.reg_title {
+  display: block;
+  width: 100%;
+  font-size: 24px;
+  padding: 20px 0;
+  text-align: center;
+
+  a {
+    color: @blue;
+  }
+}
+
+.hint {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.input_field_wr {
+
+  label {
+    display: block;
+  }
+}
+
+.input_field {
+  display: block;
+  width: 100%;
+  height: 36px;
+  border-radius: 2px;
+  border: 1px solid @gray;
+  padding: 0 8px;
+  color: @black;
+  font-size: 14px;
+  margin: 8px 0;
+
+  &:focus {
+    outline: none
+  }
+}
+
+.main_btn {
+  color: @white;
+  background: @blue;
+  border: 1px solid @btn_border;
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+
+  &:disabled {
+    background: @gray;
+    border: 1px solid @gray;
+    cursor: default;
+  }
+}
+
+.carousel-wrapper{
+  height: 400px;
+  position: relative;
+  width: 800px;
+  margin: 0 auto;
+}
+.carousel-item{
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px 50px;
+  .opacity(0);
+  transition: all 0.5s ease-in-out;
+
+  img {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.arrow-prev{
+  left: 0;
+}
+
+.arrow-next {
+  right: 0;
+}
+
+.light{
+  color: @white;
+}
+
+@media (max-width: 480px) {
+  .arrow, .light .arrow {
+    background-size: 10px;
+    background-position: 10px 50%;
+  }
+}
+
+[id^="item"] {
+  display: none;
+}
+
+.item-1 {
+  z-index: 2;
+  .opacity(1);
+}
+
+*:target ~ .item-1 {
+  .opacity(0);
+}
+
+#item-1:target ~ .item-1 {
+  .opacity(1);
+}
+
+#item-2:target ~ .item-2, #item-3:target ~ .item-3 {
+  z-index: 3;
+  .opacity(1);
+}
